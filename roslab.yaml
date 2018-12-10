@@ -1,0 +1,34 @@
+name: lvt
+
+distro: kinetic
+
+build: catkin_make
+
+runtime: nvidia
+
+packages:
+  - libglew-dev
+  - libeigen3-dev
+  - ros-kinetic-opencv3
+  
+source:
+  - name: Pangolin
+    repo: https://github.com/stevenlovegrove/Pangolin.git
+    depends:
+    build: cmake
+
+  - name: g2o
+    repo: https://github.com/RainerKuemmerle/g2o.git
+    depends:
+      - libqt4-dev
+      - qt4-qmake
+      - libqglviewer-dev
+      - libsuitesparse-dev
+      - libcxsparse3.1.4
+      - libcholmod3.0.6
+    build: cmake
+
+volume:
+  - host_path: /DATASET
+    container_path: /DATASET
+    options: ro
